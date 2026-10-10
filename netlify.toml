@@ -14,8 +14,8 @@
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
 [[redirects]]
-  from = "/api/links/:slug/stats"
-  to = "/.netlify/functions/link-stats/:slug"
+  from = "/api/links/*/stats"
+  to = "/.netlify/functions/link-stats/:splat"
   status = 200
 
 [[redirects]]
