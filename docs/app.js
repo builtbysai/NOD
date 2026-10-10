@@ -94,7 +94,7 @@
     if (!state.links.length) return;
     await Promise.allSettled(state.links.slice(0, 75).map(async link => {
       try {
-        const response = await fetch(`${API_BASE}/api/links/${encodeURIComponent(link.slug)}/stats`, {
+        const response = await fetch(`${API_BASE}/api/link-stats?slug=${encodeURIComponent(link.slug)}`, {
           headers: { 'X-NOD-Key': link.manageKey, Accept: 'application/json' },
           cache: 'no-store'
         });
@@ -605,7 +605,7 @@
 
       const checks = await Promise.all(usable.map(async item => {
         try {
-          const response = await fetch(`${API_BASE}/api/links/${encodeURIComponent(item.slug)}/stats`, {
+          const response = await fetch(`${API_BASE}/api/link-stats?slug=${encodeURIComponent(item.slug)}`, {
             headers: { 'X-NOD-Key': item.manageKey, Accept: 'application/json' },
             cache: 'no-store'
           });

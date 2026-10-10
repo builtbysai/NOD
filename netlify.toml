@@ -14,8 +14,8 @@
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
 [[redirects]]
-  from = "/api/links/*/stats"
-  to = "/.netlify/functions/link-stats/:splat"
+  from = "/api/link-stats"
+  to = "/.netlify/functions/link-stats"
   status = 200
 
 [[redirects]]
@@ -37,3 +37,10 @@
   from = "/:slug"
   to = "/.netlify/functions/redirect/:slug"
   status = 200
+
+# Build-credit safety: only production (main) ever builds.
+[context.deploy-preview]
+  ignore = "exit 0"
+
+[context.branch-deploy]
+  ignore = "exit 0"
