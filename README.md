@@ -1,8 +1,8 @@
-# NOD — Link Studio
+# NOD: Link Studio
 
 **Short links. Long memory.**
 
-<p align="center"><img src="assets/hero.svg" width="800" alt="NOD Link Studio hero — short links, long memory"></p>
+<p align="center"><img src="assets/hero.svg" width="800" alt="NOD Link Studio hero: short links, long memory"></p>
 
 <p align="center"><img src="assets/studio-screenshot.png" width="800" alt="NOD studio: shorten a URL with a single field"></p>
 
