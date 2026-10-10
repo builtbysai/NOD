@@ -1,8 +1,7 @@
-import { detectDevice, eventKey, eventsStore, getLink, htmlStatus, referrerHost } from './_shared.js';
+import { detectDevice, eventKey, eventsStore, getLink, htmlStatus, referrerHost, requestSlug } from './_shared.js';
 
 export default async (request, context) => {
-  const url = new URL(request.url);
-  const slug = url.searchParams.get('slug') || context.params?.slug || '';
+  const slug = requestSlug(request, context, 'redirect');
   const link = await getLink(slug);
 
   if (!link || !link.active) return htmlStatus('Path not found', 'This short link is not available on NOD.', 404, slug);
