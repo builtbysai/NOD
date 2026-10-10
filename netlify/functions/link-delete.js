@@ -1,10 +1,9 @@
-import { deleteStoredLink, eventsStore, getLink, json, sha256 } from './_shared.js';
+import { deleteStoredLink, eventsStore, getLink, json, requestSlug, sha256 } from './_shared.js';
 
 export default async (request, context) => {
   if (request.method !== 'DELETE') return json({ error: 'Method not allowed' }, 405, { allow: 'DELETE' });
 
-  const url = new URL(request.url);
-  const slug = url.searchParams.get('slug') || context.params?.slug || '';
+  const slug = requestSlug(request, context, 'link-delete');
   if (!slug) return json({ error: 'A link ending is required.' }, 400);
 
   const link = await getLink(slug);

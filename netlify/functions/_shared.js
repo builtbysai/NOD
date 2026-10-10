@@ -56,6 +56,19 @@ export async function sha256(value) {
   return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
 }
 
+
+export function requestSlug(request, context, funcName) {
+  const url = new URL(request.url);
+  const fromQuery = url.searchParams.get('slug');
+  if (fromQuery) return fromQuery;
+  const segments = url.pathname.split('/').filter(Boolean);
+  const last = segments[segments.length - 1] || '';
+  if (last && last !== funcName) {
+    try { return decodeURIComponent(last); } catch { return last; }
+  }
+  return context.params?.slug || '';
+}
+
 export async function getLink(slug) {
   return linksStore().get(`link:${slug}`, { type: 'json' });
 }
